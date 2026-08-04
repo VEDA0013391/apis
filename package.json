@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/VEDA0013391/apis#readme",
   "dependencies": {
-    "fastify": "^5.11.2"
+    "fastify": "^5.11.2",
+    "kuromoji": "^0.1.2",
+    "wanakana": "^5.3.1"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",
