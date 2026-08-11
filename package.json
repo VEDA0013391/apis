@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/VEDA0013391/apis#readme",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "fastify": "^5.11.2",
     "kuromoji": "^0.1.2",
+    "mongodb": "^7.5.0",
     "wanakana": "^5.3.1"
   },
   "devDependencies": {
