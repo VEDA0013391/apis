@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
 
-import { getStatusDatabase } from "../../db/status";
+import { getStatusDatabase } from "../../../db/status";
 
 export default async function (app: FastifyInstance) {
     app.get("/", async () => {

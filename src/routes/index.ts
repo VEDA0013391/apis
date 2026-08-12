@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 
 import converter from "./converter";
-import status from "./status";
+import rilume from "./rilume";
 
 export default async function (app: FastifyInstance) {
     app.get("/", async () => {
@@ -9,12 +9,12 @@ export default async function (app: FastifyInstance) {
             success: true
         };
     });
-    
+
     app.register(converter, {
         prefix: "/converter"
     });
 
-    app.register(status, {
-        prefix: "/status"
+    app.register(rilume, {
+        prefix: "/rilume"
     });
 }
