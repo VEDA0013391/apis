@@ -1,9 +1,9 @@
 import { MongoClient, Db } from "mongodb";
 
-const uri = process.env.MONGODB_STATUS_URI;
+const uri = process.env.MONGODB_RILUME_URI;
 
 if (!uri) {
-    throw new Error("MONGODB_STATUS_URI is not defined");
+    throw new Error("MONGODB_RILUME_URI is not defined");
 }
 
 const client = new MongoClient(uri);
@@ -14,8 +14,7 @@ export async function initStatusDatabase() {
     await client.connect();
 
     db = client.db("test");
-
-    console.log("MongoDB Status connected");
+    console.log("MongoDB Rilume connected");
 }
 
 export function getStatusDatabase(): Db {
