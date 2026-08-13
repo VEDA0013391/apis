@@ -5,6 +5,7 @@ import "dotenv/config";
 import { buildApp } from "./app";
 import { initJapaneseConverter } from "./services/converter/japanese.service";
 import { initStatusDatabase } from "./db/status";
+const port = Number(process.env.PORT) || 3000;
 
 const start = async () => {
     await initJapaneseConverter();
@@ -13,7 +14,7 @@ const start = async () => {
     const app = await buildApp();
 
     await app.listen({
-        port: 3000,
+        port,
         host: "0.0.0.0"
     });
 };
