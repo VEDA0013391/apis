@@ -10,16 +10,16 @@ const client = new MongoClient(uri);
 
 let db: Db;
 
-export async function initStatusDatabase() {
+export async function initRilumeDatabase() {
     await client.connect();
 
     db = client.db("test");
     console.log("MongoDB Rilume connected");
 }
 
-export function getStatusDatabase(): Db {
+export function getRilumeDatabase(): Db {
     if (!db) {
-        throw new Error("Status database is not initialized");
+        throw new Error("Rilume database is not initialized");
     }
 
     return db;

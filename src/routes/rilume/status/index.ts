@@ -1,10 +1,10 @@
 import { FastifyInstance } from "fastify";
 
-import { getStatusDatabase } from "../../../db/status";
+import { getRilumeDatabase } from "../../../db/rilume";
 
 export default async function (app: FastifyInstance) {
     app.get("/", async () => {
-        const db = getStatusDatabase();
+        const db = getRilumeDatabase();
 
         const status = await db
             .collection("status")
