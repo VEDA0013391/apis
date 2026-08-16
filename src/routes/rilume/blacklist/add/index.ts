@@ -3,28 +3,27 @@ import { FastifyInstance } from "fastify";
 import { getRilumeDatabase } from "../../../../db/rilume";
 import { authenticateRequest } from "../../../../services/auth/password.service";
 
-interface DeleteParams {
+interface AddParams {
     userId: string;
 }
 
 export default async function (app: FastifyInstance) {
-    app.delete<{ Params: DeleteParams }>("/:userId", async (request, reply) => {
+    app.post<{ Params: AddParams }>("/:userId", async (request, reply) => {
         if (!(await authenticateRequest(request, reply))) {
             return;
         }
 
         const db = getRilumeDatabase();
 
-        const result = await db
-            .collection("blacklistusers")
-            .deleteOne({
-                userId: request.params.userId
-            });
+        await db.collection("blacklistusers").insertOne({
+            userId: request.params.userId,
+            addedAt: new Date()
+        });
 
         return {
             success: true,
             data: {
-                deleted: result.deletedCount > 0
+                userId: request.params.userId
             }
         };
     });
