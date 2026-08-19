@@ -7,7 +7,7 @@ export default async function (app: FastifyInstance) {
     app.get("/", async () => {
         const db = getRilumeDatabase();
 
-        const blacklist = await db
+        const giveway = await db
             .collection("giveaways")
             .find({})
             .sort({
@@ -17,7 +17,7 @@ export default async function (app: FastifyInstance) {
 
         return {
             success: true,
-            data: blacklist
+            data: giveway
         };
     });
 
