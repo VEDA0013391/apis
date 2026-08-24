@@ -5,11 +5,13 @@ import "dotenv/config";
 import { buildApp } from "./app";
 import { initJapaneseConverter } from "./services/converter/japanese.service";
 import { initRilumeDatabase } from "./db/rilume";
+import { initRandomSongsDatabase } from "./db/random_songs";
 const port = Number(process.env.PORT) || 3000;
 
 const start = async () => {
     await initJapaneseConverter();
     await initRilumeDatabase(); // 起動時に1回接続
+    await initRandomSongsDatabase();
 
     const app = await buildApp();
 
