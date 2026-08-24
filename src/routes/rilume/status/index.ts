@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 
 import { getRilumeDatabase } from "../../../db/rilume";
-import update from "./update"
+import updateRoute from "./update"
 
 export default async function (app: FastifyInstance) {
     app.get("/", async () => {
@@ -24,7 +24,7 @@ export default async function (app: FastifyInstance) {
         };
     });
 
-    app.register(update, {
+    app.register(updateRoute, {
         prefix: "/update"
     });
 }
