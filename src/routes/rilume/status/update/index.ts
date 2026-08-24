@@ -1,6 +1,7 @@
 import { FastifyInstance } from "fastify";
 
 import { getRilumeDatabase } from "../../../../db/rilume";
+import { authenticateRequest } from "../../../../services/auth/password.service";
 
 interface UpdateBody {
     recordedAt: string;
@@ -9,7 +10,11 @@ interface UpdateBody {
 }
 
 export default async function (app: FastifyInstance) {
-    app.post<{ Body: UpdateBody }>("/", async (request) => {
+    app.post<{ Body: UpdateBody }>("/", async (request, reply) => {
+        if (!(await authenticateRequest(request, reply))) {
+            return;
+        }
+
         const { recordedAt, guildCount, memberCount } = request.body;
 
         const db = getRilumeDatabase();
